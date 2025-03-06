@@ -11,7 +11,7 @@
         </h1>
         <p class="text-lg mt-2 font-semibold">Fashion Designer</p>
       </div>
-      <img ref="imageRefs" src="assets/images/designer.png" class="w-full h-auto object-cover mt-2 rounded" />
+      <img ref="imageRefs" src="assets/images/designer.png" class="w-full h-72 object-cover mt-2 rounded" />
     </div>
 
     <div class="flex flex-col items-center">
