@@ -6,7 +6,7 @@
   <div v-else class="px-4 py-1 max-w-sm mx-auto bg-white shadow-md rounded-lg">
     <div class="flex">
       <div class="flex flex-col">
-        <h1 class="text-xl mt-3 font-bold text-blue-600">
+        <h1 class="text-xl mt-5 font-bold text-blue-600">
           Hello! <span class="text-gray-700 text-[15px] font-medium">from Tinah...</span>
         </h1>
         <p class="text-lg mt-3 font-semibold">Fashion Designer</p>
