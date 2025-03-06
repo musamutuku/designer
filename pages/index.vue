@@ -33,20 +33,25 @@
         class="rounded"
       >
         <SwiperSlide v-for="(image, index) in designs" :key="index">
-          <img ref="imageRefs" :src="image" class="w-full h-auto object-cover rounded" />
+          <div class="relative w-full h-auto">
+            <img ref="imageRefs" :src="image" class="w-full h-auto object-cover rounded" @load="imageLoaded(index)" />
+            <div v-if="!imageLoadedStatus[index]" class="absolute inset-0 flex items-center justify-center bg-gray-200">
+              <div class="small-loader"></div>
+            </div>
+          </div>
         </SwiperSlide>
       </Swiper>
 
       <button
         @click="prevSlide"
-        class="absolute left-2 top-1/2 -translate-y-1/2 bg-gray-900/60 text-white p-2 rounded-full shadow-md hover:bg-gray-900 transition"
+        class="absolute left-2 top-1/2 -translate-y-1/2 bg-gray-900/60 text-white p-2 rounded-full shadow-md hover:bg-gray-900 transition z-10"
       >
         <ChevronLeft class="w-6 h-6" />
       </button>
 
       <button
         @click="nextSlide"
-        class="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-900/60 text-white p-2 rounded-full shadow-md hover:bg-gray-900 transition"
+        class="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-900/60 text-white p-2 rounded-full shadow-md hover:bg-gray-900 transition z-10"
       >
         <ChevronRight class="w-6 h-6" />
       </button>
@@ -71,10 +76,9 @@ const designs = [
 
 const typedText = ref("");
 const showCursor = ref(true);
-
 const imageRefs = ref([]);
+const imageLoadedStatus = ref(Array(designs.length).fill(false));
 
-// Function to simulate typing effect
 const fullText =
   "Get stylish, custom-made outfits designed just for you. Look great and feel confident in fashion made to fit your personality.";
 const typeText = async () => {
@@ -85,9 +89,8 @@ const typeText = async () => {
   showCursor.value = false;
 };
 
-// Function to check when all images are loaded
 const waitForImagesToLoad = async () => {
-  await nextTick(); // Ensure refs are populated
+  await nextTick();
   const images = [...imageRefs.value];
 
   await Promise.all(
@@ -103,12 +106,15 @@ const waitForImagesToLoad = async () => {
   loading.value = false;
 };
 
+const imageLoaded = (index) => {
+  imageLoadedStatus.value[index] = true;
+};
+
 onMounted(async () => {
   typeText();
   await waitForImagesToLoad();
 });
 
-// Swiper setup
 const Swiper = ref(null);
 const SwiperSlide = ref(null);
 const swiperRef = ref(null);
@@ -134,7 +140,6 @@ onMounted(async () => {
 </script>
 
 <style>
-/* Blinking Cursor */
 @keyframes blink {
   50% {
     opacity: 0;
@@ -145,7 +150,6 @@ onMounted(async () => {
   animation: blink 1s infinite;
 }
 
-/* Loader Styles */
 .loader {
   border: 4px solid #f3f3f3;
   border-top: 4px solid #3498db;
@@ -158,5 +162,14 @@ onMounted(async () => {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.small-loader {
+  border: 3px solid #ccc;
+  border-top: 3px solid #666;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
 }
 </style>
