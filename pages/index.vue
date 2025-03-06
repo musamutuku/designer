@@ -44,14 +44,14 @@
 
       <button
         @click="prevSlide"
-        class="absolute left-2 top-1/2 -translate-y-1/2 bg-gray-900/60 text-white p-2 rounded-full shadow-md hover:bg-gray-900 transition z-10"
+        class="absolute hidden left-2 top-1/2 -translate-y-1/2 bg-gray-900/60 text-white p-2 rounded-full shadow-md hover:bg-gray-900 transition z-10"
       >
         <ChevronLeft class="w-6 h-6" />
       </button>
 
       <button
         @click="nextSlide"
-        class="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-900/60 text-white p-2 rounded-full shadow-md hover:bg-gray-900 transition z-10"
+        class="absolute right-2 hidden top-1/2 -translate-y-1/2 bg-gray-900/60 text-white p-2 rounded-full shadow-md hover:bg-gray-900 transition z-10"
       >
         <ChevronRight class="w-6 h-6" />
       </button>
