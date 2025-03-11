@@ -138,7 +138,7 @@ onMounted(() => {
 
 /* Image Animation */
 .animated-person {
-  animation: swingRotateExpand 8s ease-in-out;
+  animation: swingRotateExpand 10s ease-in-out;
   max-width: 70vw;
   height: auto;
 }
