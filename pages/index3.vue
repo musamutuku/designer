@@ -109,7 +109,7 @@ onMounted(() => {
 .icon {
   position: absolute;
   font-size: 2rem;
-  animation: rotateIcons 8s linear infinite;
+  animation: rotateIcons 15s linear infinite;
 }
 
 .icon-1 { top: -80px; left: 50%; transform: translateX(-50%); }
@@ -126,7 +126,7 @@ onMounted(() => {
 .animated-bg {
   background: linear-gradient(270deg, #ff758c, #ff7eb3, #ff758c, #ffa5c5);
   background-size: 400% 400%;
-  animation: gradientShift 8s ease infinite;
+  animation: gradientShift 15s ease infinite;
   z-index: -1;
 }
 
@@ -138,7 +138,7 @@ onMounted(() => {
 
 /* Image Animation */
 .animated-person {
-  animation: swingRotateExpand 10s ease-in-out;
+  animation: swingRotateExpand 20s ease-in-out;
   max-width: 70vw;
   height: auto;
 }
