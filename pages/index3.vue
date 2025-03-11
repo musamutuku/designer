@@ -161,7 +161,7 @@ onMounted(() => {
   backdrop-filter: blur(10px); /* Smooth glass effect */
   border-radius: 20px; /* Soft corners */
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  max-width: 90vw; /* Increased width */
+  max-width: 95vw; /* Increased width */
   max-height: 90vh; /* Ensures it fits the screen */
   animation: swingBackground 6s ease-in-out infinite;
 }
