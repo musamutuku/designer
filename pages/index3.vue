@@ -118,7 +118,7 @@ onMounted(() => {
 .icon-3 { left: -80px; top: 50%; transform: translateY(-50%); }
 .icon-4 { right: -80px; top: 50%; transform: translateY(-50%); }
 
-/* Smooth Slow Rotation (Now Matches Original Motion) */
+/* Smooth Slow Rotation (Stops After 10s) */
 @keyframes rotateIcons {
   0% { transform: rotate(0deg) translateY(80px) rotate(0deg); }
   50% { transform: rotate(180deg) translateY(80px) rotate(-180deg); }
@@ -169,7 +169,7 @@ onMounted(() => {
   border-radius: 10px; /* Slight rounding */
 }
 
-/* Image Animation */
+/* Updated Image Animation: Expands Outwards Smoothly */
 .animated-person {
   animation: swingRotateExpand 20s ease-in-out;
 }
@@ -181,8 +181,8 @@ onMounted(() => {
 @keyframes swingRotateExpand {
   0% { transform: translateY(0px) rotate(0deg) scale(1); }
   25% { transform: translateY(-20px) rotate(5deg) scale(1.1); }
-  50% { transform: translateY(0px) rotate(-5deg) scale(1.2); }
-  75% { transform: translateY(-15px) rotate(3deg) scale(1.1); }
-  100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  50% { transform: translateY(0px) rotate(-5deg) scale(1.2); } /* Increased scale */
+  75% { transform: translateY(-15px) rotate(3deg) scale(1.15); }
+  100% { transform: translateY(0px) rotate(0deg) scale(1.2); } /* Ends slightly bigger */
 }
 </style>
