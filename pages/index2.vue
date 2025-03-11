@@ -50,7 +50,7 @@ function startTyping() {
     />
 
     <!-- Typing Effect -->
-    <p class="text-xl mt-6 text-blue-700 font-mono typing-text text-center max-w-2xl relative z-10">
+    <p class="text-xl mt-1 text-blue-700 font-mono typing-text text-center max-w-2xl relative z-10">
       {{ displayedText }}
     </p>
   </div>
@@ -120,7 +120,7 @@ function startTyping() {
     transform: scale(1) translateX(-30px); /* Moves back left */
   }
   100% {
-    width: 75vw; /* Stays at 3/4 screen width */
+    width: 70vw; /* Stays at 3/4 screen width */
     transform: scale(1) translateX(0); /* Stops and centers */
   }
 }
