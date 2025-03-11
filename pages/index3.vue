@@ -44,7 +44,7 @@ onMounted(() => {
     
     <!-- Image Animation -->
     <img
-      src="/images/design22.png"
+      src="/images/design33.png"
       alt="Fashion Designer"
       :class="{'animated-person': showAnimation, 'static-person': !showAnimation}"
       class="relative z-20 rounded-lg shadow-2xl"
@@ -109,7 +109,7 @@ onMounted(() => {
 .icon {
   position: absolute;
   font-size: 2rem;
-  animation: rotateIcons 5s linear infinite;
+  animation: rotateIcons 8s linear infinite;
 }
 
 .icon-1 { top: -80px; left: 50%; transform: translateX(-50%); }
@@ -138,7 +138,7 @@ onMounted(() => {
 
 /* Image Animation */
 .animated-person {
-  animation: swingRotateExpand 5s ease-in-out;
+  animation: swingRotateExpand 8s ease-in-out;
   max-width: 70vw;
   height: auto;
 }
