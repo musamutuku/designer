@@ -45,7 +45,6 @@ function startTyping() {
     <!-- Expanding, Walking Right & Left -->
     <img
       src="/images/design22.png"
-      alt="Animated Person"
       class="animated-person relative z-10 rounded-full shadow-lg"
     />
 

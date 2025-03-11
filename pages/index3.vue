@@ -46,7 +46,6 @@ onMounted(() => {
     <div class="image-wrapper">
       <img
         src="/images/design33.png"
-        alt="Fashion Designer"
         :class="{'animated-person': showAnimation, 'static-person': !showAnimation}"
       />
     </div>
@@ -154,17 +153,22 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+  padding-top: 5px;
   background: rgba(255, 255, 255, 0.3); /* Slight transparency */
   backdrop-filter: blur(10px); /* Smooth glass effect */
   border-radius: 20px; /* Soft corners */
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  max-width: 80vw;
+  max-width: 90vw; /* Increased width */
+  max-height: 90vh; /* Ensures it fits the screen */
   animation: swingBackground 6s ease-in-out infinite;
 }
 
 .image-wrapper img {
-  max-width: 100%;
+  max-width: 100%; /* Makes image larger */
+  max-height: 100%; /* Prevents overflow */
   height: auto;
   border-radius: 10px; /* Slight rounding */
 }
@@ -180,9 +184,9 @@ onMounted(() => {
 
 @keyframes swingRotateExpand {
   0% { transform: translateY(0px) rotate(0deg) scale(1); }
-  25% { transform: translateY(-20px) rotate(5deg) scale(1.1); }
-  50% { transform: translateY(0px) rotate(-5deg) scale(1.2); } /* Increased scale */
-  75% { transform: translateY(-15px) rotate(3deg) scale(1.15); }
-  100% { transform: translateY(0px) rotate(0deg) scale(1.2); } /* Ends slightly bigger */
+  25% { transform: translateY(-20px) rotate(5deg) scale(1.2); }
+  50% { transform: translateY(0px) rotate(-5deg) scale(1.3); } /* Increased size */
+  75% { transform: translateY(-15px) rotate(3deg) scale(1.25); }
+  100% { transform: translateY(0px) rotate(0deg) scale(1.3); } /* Ends larger */
 }
 </style>
