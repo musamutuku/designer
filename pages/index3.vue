@@ -18,9 +18,9 @@ onMounted(() => {
         clearInterval(countdownInterval);
         showCountdown.value = false;
         setTimeout(() => {
-          showIcons.value = false; // Stop rotating icons
+          showIcons.value = false; // Stop rotating icons after 10s
           showAnimation.value = false; // Stop image animation
-        }, 5000);
+        }, 10000); // Icons rotate for 10 seconds
       }
     }, 1000);
   }, 3000); // Loader duration
@@ -39,7 +39,7 @@ onMounted(() => {
   </div>
 
   <div v-else class="relative flex justify-center items-center h-screen overflow-hidden bg-gradient-to-br from-indigo-700 to-purple-500">
-    <!-- Colorful Swinging Background -->
+    <!-- Swinging Background -->
     <div class="animated-bg"></div>
     
     <!-- Image with Transparent Background & Shadow -->
@@ -51,7 +51,7 @@ onMounted(() => {
       />
     </div>
 
-    <!-- Rotating Icons -->
+    <!-- Rotating Icons (Stop after 10s) -->
     <div v-if="showIcons" class="icons-container">
       <div class="icon icon-1">🎀</div> <!-- Ribbon -->
       <div class="icon icon-2">👕</div> <!-- T-Shirt -->
@@ -100,7 +100,7 @@ onMounted(() => {
   100% { transform: scale(1.5); opacity: 0; }
 }
 
-/* Rotating Icons */
+/* Icons: Slow Rotation for 10 seconds, then stop */
 .icons-container {
   position: absolute;
   width: 100px;
@@ -110,7 +110,7 @@ onMounted(() => {
 .icon {
   position: absolute;
   font-size: 2rem;
-  animation: rotateIcons 15s linear infinite;
+  animation: rotateIcons 10s linear forwards;
 }
 
 .icon-1 { top: -80px; left: 50%; transform: translateX(-50%); }
@@ -118,8 +118,10 @@ onMounted(() => {
 .icon-3 { left: -80px; top: 50%; transform: translateY(-50%); }
 .icon-4 { right: -80px; top: 50%; transform: translateY(-50%); }
 
+/* Smooth Slow Rotation (Now Matches Original Motion) */
 @keyframes rotateIcons {
   0% { transform: rotate(0deg) translateY(80px) rotate(0deg); }
+  50% { transform: rotate(180deg) translateY(80px) rotate(-180deg); }
   100% { transform: rotate(360deg) translateY(80px) rotate(-360deg); }
 }
 
