@@ -39,16 +39,17 @@ onMounted(() => {
   </div>
 
   <div v-else class="relative flex justify-center items-center h-screen overflow-hidden bg-gradient-to-br from-indigo-700 to-purple-500">
-    <!-- Colorful Animated Background -->
-    <div class="animated-bg absolute inset-0"></div>
+    <!-- Colorful Swinging Background -->
+    <div class="animated-bg"></div>
     
-    <!-- Image Animation -->
-    <img
-      src="/images/design33.png"
-      alt="Fashion Designer"
-      :class="{'animated-person': showAnimation, 'static-person': !showAnimation}"
-      class="relative z-20 rounded-lg shadow-2xl"
-    />
+    <!-- Image with Transparent Background & Shadow -->
+    <div class="image-wrapper">
+      <img
+        src="/images/design33.png"
+        alt="Fashion Designer"
+        :class="{'animated-person': showAnimation, 'static-person': !showAnimation}"
+      />
+    </div>
 
     <!-- Rotating Icons -->
     <div v-if="showIcons" class="icons-container">
@@ -122,11 +123,13 @@ onMounted(() => {
   100% { transform: rotate(360deg) translateY(80px) rotate(-360deg); }
 }
 
-/* Background Animation */
+/* Swinging Background */
 .animated-bg {
+  position: absolute;
+  inset: 0;
   background: linear-gradient(270deg, #ff758c, #ff7eb3, #ff758c, #ffa5c5);
   background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  animation: gradientShift 15s ease infinite, swingBackground 6s ease-in-out infinite;
   z-index: -1;
 }
 
@@ -136,11 +139,37 @@ onMounted(() => {
   100% { background-position: 0% 50%; }
 }
 
+/* Swing Effect for Background */
+@keyframes swingBackground {
+  0% { transform: translateX(-10px) rotate(-2deg); }
+  50% { transform: translateX(10px) rotate(2deg); }
+  100% { transform: translateX(-10px) rotate(-2deg); }
+}
+
+/* Image with Transparent Background & Swing */
+.image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.3); /* Slight transparency */
+  backdrop-filter: blur(10px); /* Smooth glass effect */
+  border-radius: 20px; /* Soft corners */
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  max-width: 80vw;
+  animation: swingBackground 6s ease-in-out infinite;
+}
+
+.image-wrapper img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px; /* Slight rounding */
+}
+
 /* Image Animation */
 .animated-person {
   animation: swingRotateExpand 20s ease-in-out;
-  max-width: 70vw;
-  height: auto;
 }
 
 .static-person {
