@@ -12,7 +12,7 @@ export default defineNuxtConfig({
           href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap",
         }
       ],
-      title: "Tinah"
+      title: "Designer"
     }
   },
   modules: ['nuxt-swiper', '@vueuse/nuxt'],
