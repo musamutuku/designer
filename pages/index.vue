@@ -22,7 +22,7 @@
       Make Robot Talk
     </button>
 
-    <!-- Centered, Rounded, Front Zooming Image -->
+    <!-- Centered, Rounded, Zooming Image -->
     <transition name="zoom" appear>
       <img
         v-if="showZoomImage"
@@ -59,7 +59,7 @@ async function typeAndSpeak() {
   showZoomImage.value = true;
   setTimeout(() => {
     showZoomImage.value = false;
-  }, 2000);
+  }, 2500); // match animation duration
 }
 </script>
 
@@ -70,12 +70,12 @@ async function typeAndSpeak() {
     opacity: 0.7;
   }
   100% {
-    transform: scale(3);
+    transform: scale(10);
     opacity: 0;
   }
 }
 
 .animate-zoom {
-  animation: zoomGrow 2s ease-out forwards;
+  animation: zoomGrow 2.5s ease-out forwards;
 }
 </style>
