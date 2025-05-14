@@ -28,7 +28,7 @@
         v-if="showZoomImage"
         src="/robot-blast.png"
         alt="TD"
-        class="fixed inset-0 m-auto w-24 h-24 rounded-full animate-zoom z-50 pointer-events-none"
+        class="fixed inset-0 m-auto w-24 h-24 rounded-full animate-zoom z-70 pointer-events-none"
       />
     </transition>
   </div>
