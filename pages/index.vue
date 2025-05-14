@@ -37,7 +37,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const fullMessage = "Hello! I'm your cartoon robot. I can talk as I type!";
+const fullMessage = "Fashion is the armor to survive the reality of everyday life. Get the best designer with quality fashions — Tinah Designer";
 const displayedMessage = ref("");
 const showZoomImage = ref(false);
 
