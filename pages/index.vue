@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center p-4 relative">
+  <div class="flex flex-col items-center p-4 relative min-h-screen overflow-hidden">
     <!-- Cartoon Robot Video -->
     <video autoplay loop muted playsinline class="w-48 h-auto">
       <source src="/robot.mp4" type="video/mp4" />
@@ -19,7 +19,7 @@
       @click="typeAndSpeak"
       class="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
     >
-      Make Robot Talk
+      Start
     </button>
 
     <!-- Zooming Image: Centered, Rounded, Medium Zoom -->
@@ -27,8 +27,8 @@
       <img
         v-if="showZoomImage"
         src="/robot-blast.png"
-        alt="Zoom Effect"
-        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full animate-zoom z-50"
+        alt="TD"
+        class="fixed inset-0 m-auto w-24 h-24 rounded-full animate-zoom z-50 pointer-events-none"
       />
     </transition>
   </div>
@@ -44,22 +44,25 @@ const showZoomImage = ref(false);
 async function typeAndSpeak() {
   displayedMessage.value = "";
 
+  // Voice
   const utterance = new SpeechSynthesisUtterance(fullMessage);
   utterance.lang = 'en-US';
   utterance.rate = 1.2;
   speechSynthesis.cancel();
   speechSynthesis.speak(utterance);
 
+  // Typing
   const words = fullMessage.split(" ");
   for (const word of words) {
     displayedMessage.value += word + " ";
     await new Promise(resolve => setTimeout(resolve, 300));
   }
 
+  // Show zooming image
   showZoomImage.value = true;
   setTimeout(() => {
     showZoomImage.value = false;
-  }, 1800); // matches animation time
+  }, 1800);
 }
 </script>
 
