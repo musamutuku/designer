@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center p-4 relative min-h-screen overflow-hidden">
     <!-- Cartoon Robot Video -->
-    <video autoplay loop muted playsinline class="w-48 h-auto">
+    <video autoplay loop muted playsinline class="w-full max-w-sm md:max-w-md lg:max-w-lg h-auto rounded-lg shadow-md">
       <source src="/robot.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
