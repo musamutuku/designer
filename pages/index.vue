@@ -19,16 +19,16 @@
       @click="typeAndSpeak"
       class="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
     >
-      Open
+      Make Robot Talk
     </button>
 
-    <!-- Rounded Zooming Image -->
+    <!-- Centered, Rounded, Front Zooming Image -->
     <transition name="zoom" appear>
       <img
         v-if="showZoomImage"
         src="/robot-blast.png"
-        alt="TD"
-        class="absolute w-24 h-24 rounded-full animate-zoom max-w-none"
+        alt="Zoom Effect"
+        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full animate-zoom z-50"
       />
     </transition>
   </div>
@@ -42,23 +42,20 @@ const displayedMessage = ref("");
 const showZoomImage = ref(false);
 
 async function typeAndSpeak() {
-  displayedMessage.value = ""; // Reset previous message
+  displayedMessage.value = "";
 
-  // Speak full message
   const utterance = new SpeechSynthesisUtterance(fullMessage);
   utterance.lang = 'en-US';
   utterance.rate = 1.2;
   speechSynthesis.cancel();
   speechSynthesis.speak(utterance);
 
-  // Type message word-by-word
   const words = fullMessage.split(" ");
   for (const word of words) {
     displayedMessage.value += word + " ";
     await new Promise(resolve => setTimeout(resolve, 300));
   }
 
-  // Show zoom image
   showZoomImage.value = true;
   setTimeout(() => {
     showZoomImage.value = false;
