@@ -92,7 +92,7 @@ watch(theme, v => {
 
           <div data-aos="fade-left" class="flex justify-center">
             <div class="w-64 h-64 rounded-2xl overflow-hidden shadow-xl ring-2 ring-emerald-200">
-              <img src="/abigail.jpg" class="w-full h-full object-cover" alt="Abigail Mueni" />
+              <img src="/design1.png" class="w-full h-full object-cover" alt="Abigail Mueni" />
             </div>
           </div>
         </div>
