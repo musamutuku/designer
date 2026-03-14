@@ -59,7 +59,7 @@ d="M4 6h16M4 12h16M4 18h16" />
 <!-- HERO -->
 <section class="min-h-screen flex items-center bg-gradient-to-r from-slate-900 via-blue-900 to-slate-800 text-white">
 
-<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 mt-4 gap-10 md:gap-16 items-center">
 
 <div>
 
@@ -159,7 +159,7 @@ computer systems and access essential digital services.
 
 
 <!-- SKILLS -->
-<section id="skills" class="py-12 md:py-20 bg-gray-100">
+<section id="skills" class="py-14 md:py-20 bg-gray-100">
 <div class="max-w-7xl mx-auto px-6">
 
 <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
@@ -211,7 +211,7 @@ Software & Tools
 
 
 <!-- SERVICES -->
-<section id="services" class="py-12 md:py-20">
+<section id="services" class="py-14 md:py-20">
 <div class="max-w-7xl mx-auto px-6">
 
 <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
@@ -254,7 +254,7 @@ Posters, business cards, programmes and invitation designs.
 
 
 <!-- EXPERIENCE -->
-<section id="experience" class="py-12 md:py-20 bg-gray-100">
+<section id="experience" class="py-14 md:py-20 bg-gray-100">
 <div class="max-w-5xl mx-auto px-6">
 
 <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
@@ -297,7 +297,7 @@ networks and assisted staff with ICT solutions.
 
 
 <!-- PROJECTS -->
-<section id="projects" class="py-12 md:py-20">
+<section id="projects" class="py-14 md:py-20">
 <div class="max-w-7xl mx-auto px-6">
 
 <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
