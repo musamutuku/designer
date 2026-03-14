@@ -1,189 +1,477 @@
-<script setup lang="ts">
-import { ref, onMounted, watch, nextTick } from 'vue'
-import { useTheme } from '~/composables/useTheme'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-
-const { theme, toggleTheme } = useTheme()
-
-const loading = ref(true)
-onMounted(() => setTimeout(() => (loading.value = false), 700))
-
-const roles = [
-  'ICT Support Officer',
-  'Computer Systems Technician',
-  'ICT & Software Support',
-  'Technical Support Specialist'
-]
-
-const displayedRole = ref('')
-let roleIndex = 0
-let charIndex = 0
-let timer: any = null
-
-function typeRole() {
-  timer = setInterval(() => {
-    const r = roles[roleIndex]
-    if (charIndex <= r.length) {
-      displayedRole.value = r.slice(0, charIndex++)
-    } else {
-      clearInterval(timer)
-      setTimeout(deleteRole, 800)
-    }
-  }, 70)
-}
-
-function deleteRole() {
-  timer = setInterval(() => {
-    if (charIndex >= 0) {
-      displayedRole.value = roles[roleIndex].slice(0, charIndex--)
-    } else {
-      clearInterval(timer)
-      roleIndex = (roleIndex + 1) % roles.length
-      charIndex = 0
-      setTimeout(typeRole, 300)
-    }
-  }, 35)
-}
-
-onMounted(() => {
-  AOS.init({ duration: 700, once: true })
-  nextTick(typeRole)
-  document.documentElement.classList.toggle('dark', theme.value === 'dark')
-})
-
-watch(theme, v => {
-  document.documentElement.classList.toggle('dark', v === 'dark')
-})
-</script>
-
 <template>
-  <div v-if="loading" class="fixed inset-0 flex items-center justify-center bg-white dark:bg-slate-900 z-50">
-    <div class="w-14 h-14 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
-  </div>
+<div class="bg-slate-50 text-gray-800 scroll-smooth">
 
-  <div :class="theme === 'dark' ? 'dark bg-slate-900 text-slate-100' : 'bg-white text-slate-900'">
+<!-- NAVBAR -->
+<header class="fixed w-full z-50 backdrop-blur bg-white/50 shadow">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
 
-    <!-- HEADER -->
-    <header class="fixed top-0 w-full z-50 backdrop-blur bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800">
-      <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
-        <h1 class="font-bold tracking-wide text-emerald-600">ABIGAIL MUENI</h1>
-        <button @click="toggleTheme" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700">🌓</button>
-      </div>
-    </header>
+<h1
+@click="scrollTop"
+class="font-bold text-xl text-slate-900 cursor-pointer hover:text-orange-500 transition">
+Abigail
+</h1>
 
-    <main class="pt-24">
+<nav class="hidden md:flex gap-8 font-medium text-sm">
+<a href="#about" class="hover:text-orange-500">About</a>
+<a href="#skills" class="hover:text-orange-500">Skills</a>
+<a href="#services" class="hover:text-orange-500">Services</a>
+<a href="#experience" class="hover:text-orange-500">Experience</a>
+<a href="#projects" class="hover:text-orange-500">Projects</a>
+<a href="#contact" class="hover:text-orange-500">Contact</a>
+</nav>
 
-      <!-- HERO -->
-      <section class="min-h-[70vh] flex items-center">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-          <div data-aos="fade-right">
-            <p class="uppercase text-sm tracking-widest text-slate-500">ICT Professional</p>
-            <h2 class="text-3xl md:text-5xl font-extrabold mt-3">
-              Abigail Mueni
-              <span class="block text-emerald-500 mt-2">Reliable ICT & Technical Support</span>
-            </h2>
-            <p class="mt-5 text-slate-600 dark:text-slate-300 max-w-xl">
-              Dedicated ICT Technician with experience in computer systems support, troubleshooting,
-              networking, and user assistance across SACCO and media production environments.
-            </p>
-            <div class="mt-6 text-sm text-slate-500">Currently: <span class="font-semibold text-emerald-600">{{ displayedRole }}</span></div>
-          </div>
+</div>
+</header>
 
-          <div data-aos="fade-left" class="flex justify-center">
-            <div class="w-64 h-64 rounded-2xl overflow-hidden shadow-xl ring-2 ring-emerald-200">
-              <img src="/design1.png" class="w-full h-full object-cover" alt="Abigail Mueni" />
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- ABOUT -->
-      <section class="py-20 bg-slate-50 dark:bg-slate-800">
-        <div class="max-w-4xl mx-auto px-6" data-aos="fade-up">
-          <h3 class="text-2xl font-bold mb-4">About Me</h3>
-          <p class="text-slate-600 dark:text-slate-300">
-            I am an ICT Support Officer skilled in hardware and software installation, system maintenance,
-            troubleshooting, and basic networking. I have supported organizational operations by ensuring
-            system reliability, data security, and efficient ICT service delivery.
-          </p>
-        </div>
-      </section>
+<!-- HERO -->
+<section class="min-h-screen flex items-center bg-gradient-to-r from-slate-900 via-blue-900 to-slate-800 text-white">
 
-      <!-- SKILLS -->
-      <section class="py-20">
-        <div class="max-w-6xl mx-auto px-6" data-aos="fade-up">
-          <h3 class="text-2xl font-bold mb-6">Core Skills</h3>
-          <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <div class="skill-card">Hardware & Software Installation</div>
-            <div class="skill-card">Preventive Maintenance & Troubleshooting</div>
-            <div class="skill-card">Windows OS Configuration</div>
-            <div class="skill-card">Basic Networking (LAN, Routers)</div>
-            <div class="skill-card">Printers & Peripheral Support</div>
-            <div class="skill-card">User Support & Helpdesk</div>
-          </div>
-        </div>
-      </section>
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
 
-      <!-- EXPERIENCE -->
-      <section class="py-20 bg-slate-50 dark:bg-slate-800">
-        <div class="max-w-6xl mx-auto px-6" data-aos="fade-up">
-          <h3 class="text-2xl font-bold mb-8">Work Experience</h3>
+<div>
 
-          <div class="space-y-6">
-            <div class="exp-card">
-              <h4>Computer Systems Support Officer – Unilix Media Production</h4>
-              <p class="period">2025 – Present</p>
-              <p>Providing technical support, system maintenance, and troubleshooting for production teams.</p>
-            </div>
+<p class="uppercase text-orange-400 tracking-widest mb-3">
+ICT Technician • Designer
+</p>
 
-            <div class="exp-card">
-              <h4>ICT Support Officer – A.B.C Sacco</h4>
-              <p class="period">2022 – 2024</p>
-              <p>Supported desktops, printers, networks, backups, and staff ICT training.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+<h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+Abigail Mueni
+</h1>
 
-      <!-- CONTACT -->
-      <section class="py-20">
-        <div class="max-w-4xl mx-auto px-6" data-aos="fade-up">
-          <h3 class="text-2xl font-bold mb-4">Contact</h3>
-          <div class="flex flex-wrap gap-4">
-            <a href="mailto:muenideborah470@gmail.com" class="contact-btn">Email</a>
-            <a href="tel:0741034095" class="contact-btn">Call</a>
-            <a href="/Abigail Mueni - CV.pdf" download class="contact-btn">Download CV</a>
-          </div>
-        </div>
-      </section>
+<p class="text-gray-300 text-lg mb-8">
+Dedicated ICT Technician providing computer support,
+network setup, online government services, and digital design
+solutions for individuals and businesses.
+</p>
 
-    </main>
+<div class="flex gap-4">
 
-    <footer class="py-6 text-center text-sm text-slate-500 border-t dark:border-slate-700">
-      © {{ new Date().getFullYear() }} Abigail Mueni · ICT Support Professional
-    </footer>
-  </div>
+<a href="#contact"
+class="px-6 py-3 bg-orange-500 rounded-lg shadow-lg hover:bg-orange-600 transition">
+Hire Me
+</a>
+
+<button
+@click="openServices = true"
+class="px-6 py-3 border border-white rounded-lg hover:bg-white hover:text-slate-900 transition">
+Online Services
+</button>
+
+</div>
+</div>
+
+
+<!-- PHOTO -->
+<div class="flex justify-center rounded-3xl">
+
+<img
+src="/abigail.png"
+class="w-80 h-80 rounded-3xl object-cover"
+>
+
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about" class="py-24">
+<div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+
+<div>
+<h2 class="text-4xl font-bold mb-6">About Me</h2>
+
+<p class="text-gray-600 mb-6">
+Detail-oriented ICT Technician experienced in computer systems
+support, troubleshooting, hardware installation, networking and
+digital services assistance.
+</p>
+
+<p class="text-gray-600">
+I help individuals and organizations maintain reliable
+computer systems and access essential digital services.
+</p>
+
+</div>
+
+<div class="grid grid-cols-2 gap-6">
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="text-3xl font-bold text-orange-500">3+</h3>
+<p class="text-gray-500">Years Experience</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="text-3xl font-bold text-orange-500">50+</h3>
+<p class="text-gray-500">Clients Assisted</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="text-3xl font-bold text-orange-500">20+</h3>
+<p class="text-gray-500">Systems Maintained</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="text-3xl font-bold text-orange-500">10+</h3>
+<p class="text-gray-500">Projects Completed</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills" class="py-24 bg-gray-100">
+<div class="max-w-7xl mx-auto px-6">
+
+<h2 class="text-4xl font-bold text-center mb-16">
+Professional Skills
+</h2>
+
+<div class="grid md:grid-cols-3 gap-8">
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="font-bold mb-4 text-orange-500">
+Hardware & Systems
+</h3>
+<ul class="text-gray-600 space-y-2 text-sm">
+<li>Computer Assembly</li>
+<li>Hardware Troubleshooting</li>
+<li>System Installation</li>
+<li>Preventive Maintenance</li>
+</ul>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="font-bold mb-4 text-orange-500">
+Networking
+</h3>
+<ul class="text-gray-600 space-y-2 text-sm">
+<li>LAN Setup</li>
+<li>Router Configuration</li>
+<li>Internet Troubleshooting</li>
+<li>Network Security Basics</li>
+</ul>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="font-bold mb-4 text-orange-500">
+Software & Tools
+</h3>
+<ul class="text-gray-600 space-y-2 text-sm">
+<li>Windows OS</li>
+<li>Microsoft Office</li>
+<li>Printer & Scanner Setup</li>
+<li>Data Backup</li>
+</ul>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+<!-- SERVICES -->
+<section id="services" class="py-24">
+<div class="max-w-7xl mx-auto px-6">
+
+<h2 class="text-4xl font-bold text-center mb-16">
+Services
+</h2>
+
+<div class="grid md:grid-cols-3 gap-10">
+
+<div class="bg-white p-8 rounded-xl shadow">
+<h3 class="text-xl font-bold mb-4 text-orange-500">
+Computer Support
+</h3>
+<p class="text-gray-600">
+Hardware troubleshooting and computer system maintenance.
+</p>
+</div>
+
+<div class="bg-white p-8 rounded-xl shadow">
+<h3 class="text-xl font-bold mb-4 text-orange-500">
+Government Online Services
+</h3>
+<p class="text-gray-600">
+KRA, NTSA, eCitizen and other online applications assistance.
+</p>
+</div>
+
+<div class="bg-white p-8 rounded-xl shadow">
+<h3 class="text-xl font-bold mb-4 text-orange-500">
+Graphic Design
+</h3>
+<p class="text-gray-600">
+Posters, business cards, programmes and invitation designs.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+<!-- EXPERIENCE -->
+<section id="experience" class="py-24 bg-gray-100">
+<div class="max-w-5xl mx-auto px-6">
+
+<h2 class="text-4xl font-bold text-center mb-16">
+Work Experience
+</h2>
+
+<div class="space-y-8">
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="font-bold text-lg">
+Computer Systems Support Officer
+</h3>
+<p class="text-orange-500 text-sm mb-2">
+Unilix Media Production • 2025 – Present
+</p>
+<p class="text-gray-600 text-sm">
+Provide technical support for computers, install and maintain
+software systems, troubleshoot hardware and support
+network connectivity.
+</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="font-bold text-lg">
+ICT Support Officer
+</h3>
+<p class="text-orange-500 text-sm mb-2">
+A.B.C Sacco • 2022 – 2024
+</p>
+<p class="text-gray-600 text-sm">
+Provided technical support for office systems, printers,
+networks and assisted staff with ICT solutions.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+<!-- PROJECTS -->
+<section id="projects" class="py-24">
+<div class="max-w-7xl mx-auto px-6">
+
+<h2 class="text-4xl font-bold text-center mb-16">
+Projects
+</h2>
+
+<div class="grid md:grid-cols-3 gap-10">
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="font-bold mb-2">
+Office Network Setup
+</h3>
+<p class="text-gray-600 text-sm">
+Configured LAN network and internet connectivity
+for office operations.
+</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="font-bold mb-2">
+Computer Maintenance
+</h3>
+<p class="text-gray-600 text-sm">
+Performed system upgrades and preventive
+maintenance for multiple computers.
+</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="font-bold mb-2">
+Design Projects
+</h3>
+<p class="text-gray-600 text-sm">
+Created posters, programmes and invitation cards
+for various clients.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+<!-- CONTACT -->
+<section id="contact" class="py-24 bg-slate-900 text-white">
+<div class="max-w-4xl mx-auto px-6 text-center">
+
+<h2 class="text-4xl font-bold mb-6">
+Contact
+</h2>
+
+<p class="text-gray-300 mb-10">
+Available for ICT support and online services assistance.
+</p>
+
+<div class="space-y-3 text-lg">
+<p>📞 0741034095</p>
+<p>📧 muenideborah470@gmail.com</p>
+<p>📍 Machakos, Kenya</p>
+</div>
+
+</div>
+</section>
+
+
+<footer class="bg-black text-gray-400 text-center py-6">
+© {{ new Date().getFullYear() }} Abigail Mueni
+</footer>
+
+
+
+<!-- SERVICES MODAL -->
+
+<div
+v-if="openServices"
+@click.self="openServices=false"
+class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+
+<div
+class="bg-white rounded-xl w-full max-w-2xl max-h-[80vh] overflow-y-auto p-6 relative">
+
+<h2 class="text-xl font-bold mb-6 text-center">
+Request Service
+</h2>
+
+
+<div
+v-for="service in services"
+:key="service"
+class="flex justify-between items-center border p-3 rounded mb-3">
+
+<span>{{ service }}</span>
+
+<div class="flex gap-4">
+
+<!-- WHATSAPP -->
+<a
+:href="whatsappLink(service)"
+target="_blank"
+class="text-green-600 hover:scale-110">
+
+<img src="/whatsapp.png" class="h-5 w-5">
+
+</a>
+
+
+<!-- EMAIL -->
+<a
+:href="emailLink(service)"
+class="text-blue-500 hover:scale-110">
+
+<img src="/gmail.png" class="h-5 w-5">
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- OTHER SERVICE -->
+
+<div class="mt-6">
+
+<h3 class="font-semibold mb-2">
+Other Service
+</h3>
+
+<textarea
+v-model="otherService"
+placeholder="Describe your request..."
+class="w-full border p-3 rounded mb-3"></textarea>
+
+<div class="flex gap-4">
+
+<a
+:href="whatsappOther"
+target="_blank"
+class="text-green-600">
+
+<img src="/whatsapp.png" class="h-5 w-5">
+
+</a>
+
+<a
+:href="emailOther"
+class="text-blue-500">
+
+<img src="/gmail.png" class="h-5 w-5">
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 </template>
 
-<style scoped>
-.skill-card {
-  @apply p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm;
+
+
+<script setup>
+import { ref, computed } from "vue"
+
+const openServices = ref(false)
+const otherService = ref("")
+
+const phone = "254741034095"
+const email = "muenideborah470@gmail.com"
+
+const services = [
+"KRA Services",
+"NTSA Services",
+"eCitizen Services",
+"Business Registration",
+"Poster Design",
+"Programme Design",
+"Business Card Design",
+"Invitation Cards",
+"CV Writing",
+"Computer Repair",
+"Software Installation"
+]
+
+const whatsappLink = (service)=>{
+const text = `Hello, I would like to request: ${service}`
+return `https://wa.me/${phone}?text=${encodeURIComponent(text)}`
 }
 
-.exp-card {
-  @apply p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm;
+const emailLink = (service)=>{
+const subject = `Service Request: ${service}`
+const body = `Hello, I would like to request: ${service}`
+return `mailto:${email}?subject=${subject}&body=${body}`
 }
 
-.exp-card h4 {
-  @apply font-semibold text-emerald-600;
-}
+const whatsappOther = computed(()=>{
+return `https://wa.me/${phone}?text=${encodeURIComponent(otherService.value)}`
+})
 
-.period {
-  @apply text-sm text-slate-500 mb-2;
-}
+const emailOther = computed(()=>{
+return `mailto:${email}?subject=Service Request&body=${otherService.value}`
+})
 
-.contact-btn {
-  @apply px-4 py-2 rounded-lg border border-emerald-500 text-emerald-600 hover:bg-emerald-500 hover:text-white transition;
+const scrollTop = ()=>{
+window.scrollTo({top:0,behavior:"smooth"})
 }
-</style>
+</script>
