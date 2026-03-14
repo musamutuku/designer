@@ -2,15 +2,16 @@
 <div class="bg-slate-50 text-gray-800 scroll-smooth">
 
 <!-- NAVBAR -->
-<header class="fixed w-full z-50 backdrop-blur bg-white/50 shadow">
-<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+<header class="fixed w-full z-50 backdrop-blur bg-white/70 shadow">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-6 py-4">
 
 <h1
 @click="scrollTop"
-class="font-bold text-xl text-slate-900 cursor-pointer hover:text-orange-500 transition">
+class="font-bold text-lg md:text-xl text-slate-900 cursor-pointer hover:text-orange-500 transition">
 Abigail
 </h1>
 
+<!-- DESKTOP MENU -->
 <nav class="hidden md:flex gap-8 font-medium text-sm">
 <a href="#about" class="hover:text-orange-500">About</a>
 <a href="#skills" class="hover:text-orange-500">Skills</a>
@@ -20,32 +21,63 @@ Abigail
 <a href="#contact" class="hover:text-orange-500">Contact</a>
 </nav>
 
+<!-- MOBILE MENU BUTTON -->
+<button
+@click="mobileMenu = !mobileMenu"
+class="md:hidden text-slate-900">
+
+<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none"
+viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round"
+stroke-width="2"
+d="M4 6h16M4 12h16M4 18h16" />
+</svg>
+
+</button>
+
+</div>
+
+<!-- MOBILE MENU -->
+<div v-if="mobileMenu" class="md:hidden bg-white border-t shadow">
+
+<nav class="flex flex-col text-center font-medium">
+
+<a @click="mobileMenu=false" href="#about" class="py-3 hover:bg-gray-100">About</a>
+<a @click="mobileMenu=false" href="#skills" class="py-3 hover:bg-gray-100">Skills</a>
+<a @click="mobileMenu=false" href="#services" class="py-3 hover:bg-gray-100">Services</a>
+<a @click="mobileMenu=false" href="#experience" class="py-3 hover:bg-gray-100">Experience</a>
+<a @click="mobileMenu=false" href="#projects" class="py-3 hover:bg-gray-100">Projects</a>
+<a @click="mobileMenu=false" href="#contact" class="py-3 hover:bg-gray-100">Contact</a>
+
+</nav>
+
 </div>
 </header>
+
 
 
 <!-- HERO -->
 <section class="min-h-screen flex items-center bg-gradient-to-r from-slate-900 via-blue-900 to-slate-800 text-white">
 
-<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
 
 <div>
 
-<p class="uppercase text-orange-400 tracking-widest mb-3">
+<p class="uppercase text-orange-400 tracking-widest mb-3 text-sm">
 ICT Technician • Designer
 </p>
 
-<h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+<h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6">
 Abigail Mueni
 </h1>
 
-<p class="text-gray-300 text-lg mb-8">
+<p class="text-gray-300 text-base md:text-lg mb-8">
 Dedicated ICT Technician providing computer support,
 network setup, online government services, and digital design
 solutions for individuals and businesses.
 </p>
 
-<div class="flex gap-4">
+<div class="flex flex-wrap gap-4">
 
 <a href="#contact"
 class="px-6 py-3 bg-orange-500 rounded-lg shadow-lg hover:bg-orange-600 transition">
@@ -59,17 +91,17 @@ Online Services
 </button>
 
 </div>
+
 </div>
 
 
 <!-- PHOTO -->
-<div class="flex justify-center rounded-3xl">
+<div class="flex justify-center">
 
 <img
 src="/abigail.png"
-class="w-80 h-80 rounded-3xl object-cover"
->
-
+class="w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-3xl object-cover"
+/>
 
 </div>
 
@@ -77,12 +109,13 @@ class="w-80 h-80 rounded-3xl object-cover"
 </section>
 
 
+
 <!-- ABOUT -->
-<section id="about" class="py-24">
+<section id="about" class="py-16 md:py-24">
 <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
 
 <div>
-<h2 class="text-4xl font-bold mb-6">About Me</h2>
+<h2 class="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
 
 <p class="text-gray-600 mb-6">
 Detail-oriented ICT Technician experienced in computer systems
@@ -101,22 +134,22 @@ computer systems and access essential digital services.
 
 <div class="bg-white p-6 rounded-xl shadow">
 <h3 class="text-3xl font-bold text-orange-500">3+</h3>
-<p class="text-gray-500">Years Experience</p>
+<p class="text-gray-500 text-sm">Years Experience</p>
 </div>
 
 <div class="bg-white p-6 rounded-xl shadow">
 <h3 class="text-3xl font-bold text-orange-500">50+</h3>
-<p class="text-gray-500">Clients Assisted</p>
+<p class="text-gray-500 text-sm">Clients Assisted</p>
 </div>
 
 <div class="bg-white p-6 rounded-xl shadow">
 <h3 class="text-3xl font-bold text-orange-500">20+</h3>
-<p class="text-gray-500">Systems Maintained</p>
+<p class="text-gray-500 text-sm">Systems Maintained</p>
 </div>
 
 <div class="bg-white p-6 rounded-xl shadow">
 <h3 class="text-3xl font-bold text-orange-500">10+</h3>
-<p class="text-gray-500">Projects Completed</p>
+<p class="text-gray-500 text-sm">Projects Completed</p>
 </div>
 
 </div>
@@ -124,15 +157,16 @@ computer systems and access essential digital services.
 </section>
 
 
+
 <!-- SKILLS -->
-<section id="skills" class="py-24 bg-gray-100">
+<section id="skills" class="py-12 md:py-20 bg-gray-100">
 <div class="max-w-7xl mx-auto px-6">
 
-<h2 class="text-4xl font-bold text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
 Professional Skills
 </h2>
 
-<div class="grid md:grid-cols-3 gap-8">
+<div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
 
 <div class="bg-white p-6 rounded-xl shadow">
 <h3 class="font-bold mb-4 text-orange-500">
@@ -177,14 +211,14 @@ Software & Tools
 
 
 <!-- SERVICES -->
-<section id="services" class="py-24">
+<section id="services" class="py-12 md:py-20">
 <div class="max-w-7xl mx-auto px-6">
 
-<h2 class="text-4xl font-bold text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
 Services
 </h2>
 
-<div class="grid md:grid-cols-3 gap-10">
+<div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
 
 <div class="bg-white p-8 rounded-xl shadow">
 <h3 class="text-xl font-bold mb-4 text-orange-500">
@@ -220,10 +254,10 @@ Posters, business cards, programmes and invitation designs.
 
 
 <!-- EXPERIENCE -->
-<section id="experience" class="py-24 bg-gray-100">
+<section id="experience" class="py-12 md:py-20 bg-gray-100">
 <div class="max-w-5xl mx-auto px-6">
 
-<h2 class="text-4xl font-bold text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
 Work Experience
 </h2>
 
@@ -263,14 +297,14 @@ networks and assisted staff with ICT solutions.
 
 
 <!-- PROJECTS -->
-<section id="projects" class="py-24">
+<section id="projects" class="py-12 md:py-20">
 <div class="max-w-7xl mx-auto px-6">
 
-<h2 class="text-4xl font-bold text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
 Projects
 </h2>
 
-<div class="grid md:grid-cols-3 gap-10">
+<div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
 
 <div class="bg-white p-6 rounded-xl shadow">
 <h3 class="font-bold mb-2">
@@ -309,10 +343,10 @@ for various clients.
 
 
 <!-- CONTACT -->
-<section id="contact" class="py-24 bg-slate-900 text-white">
+<section id="contact" class="py-12 md:py-20 bg-slate-900 text-white">
 <div class="max-w-4xl mx-auto px-6 text-center">
 
-<h2 class="text-4xl font-bold mb-6">
+<h2 class="text-3xl md:text-4xl font-bold mb-6">
 Contact
 </h2>
 
@@ -322,12 +356,13 @@ Available for ICT support and online services assistance.
 
 <div class="space-y-3 text-lg">
 <p>📞 0741034095</p>
-<p>📧 muenideborah470@gmail.com</p>
-<p>📍 Machakos, Kenya</p>
+<p class="flex items-center justify-center gap-2"><img src="/gmail.png" class="h-5 w-5"> <span>muenideborah470@gmail.com</span></p>
+<p class="flex items-center justify-center gap-2"><img src="/map.png" class="h-5 w-5"> <span>Machakos, Kenya</span></p>
 </div>
 
 </div>
 </section>
+
 
 
 <footer class="bg-black text-gray-400 text-center py-6">
@@ -337,19 +372,16 @@ Available for ICT support and online services assistance.
 
 
 <!-- SERVICES MODAL -->
-
 <div
 v-if="openServices"
 @click.self="openServices=false"
 class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
 
-<div
-class="bg-white rounded-xl w-full max-w-2xl max-h-[80vh] overflow-y-auto p-6 relative">
+<div class="bg-white rounded-xl w-full max-w-2xl max-h-[80vh] overflow-y-auto p-6">
 
 <h2 class="text-xl font-bold mb-6 text-center">
 Request Service
 </h2>
-
 
 <div
 v-for="service in services"
@@ -360,32 +392,17 @@ class="flex justify-between items-center border p-3 rounded mb-3">
 
 <div class="flex gap-4">
 
-<!-- WHATSAPP -->
-<a
-:href="whatsappLink(service)"
-target="_blank"
-class="text-green-600 hover:scale-110">
-
+<a :href="whatsappLink(service)" target="_blank">
 <img src="/whatsapp.png" class="h-5 w-5">
-
 </a>
 
-
-<!-- EMAIL -->
-<a
-:href="emailLink(service)"
-class="text-blue-500 hover:scale-110">
-
+<a :href="emailLink(service)">
 <img src="/gmail.png" class="h-5 w-5">
-
 </a>
 
 </div>
 
 </div>
-
-
-<!-- OTHER SERVICE -->
 
 <div class="mt-6">
 
@@ -400,21 +417,12 @@ class="w-full border p-3 rounded mb-3"></textarea>
 
 <div class="flex gap-4">
 
-<a
-:href="whatsappOther"
-target="_blank"
-class="text-green-600">
-
+<a :href="whatsappOther" target="_blank">
 <img src="/whatsapp.png" class="h-5 w-5">
-
 </a>
 
-<a
-:href="emailOther"
-class="text-blue-500">
-
+<a :href="emailOther">
 <img src="/gmail.png" class="h-5 w-5">
-
 </a>
 
 </div>
@@ -433,6 +441,7 @@ class="text-blue-500">
 import { ref, computed } from "vue"
 
 const openServices = ref(false)
+const mobileMenu = ref(false)
 const otherService = ref("")
 
 const phone = "254741034095"
