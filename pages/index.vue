@@ -57,9 +57,9 @@ d="M4 6h16M4 12h16M4 18h16" />
 
 
 <!-- HERO -->
-<section class="min-h-screen flex items-center bg-gradient-to-r from-slate-900 via-blue-900 to-slate-800 text-white">
+<section class="min-h-screen flex items-center bg-gradient-to-r from-slate-900 via-blue-900 to-slate-800 text-white pt-10 sm:pt-20">
 
-<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 mt-4 gap-10 md:gap-16 items-center">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
 
 <div>
 
@@ -100,7 +100,7 @@ Online Services
 
 <img
 src="/abigail.png"
-class="w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-3xl object-cover"
+class="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-3xl object-cover"
 />
 
 </div>
